@@ -1,0 +1,12 @@
+{%extends 'index.html'%}
+{% block FormCliente %}
+<title> Nuevo Cliente</title>
+<h1>Nuevo Cliente</h1>
+<form method="post" action="{% url 'clientes' %}">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="OK">
+</form>
+
+
+{% endblock %}

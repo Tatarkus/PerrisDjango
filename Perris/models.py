@@ -12,4 +12,6 @@ class Mascota(models.Model):
     nombre=models.CharField(max_length=30)
     color=models.CharField(max_length=20)
 
-class ClienteMascota
+class Adopcion(models.Model):
+    run=models.ForeignKey(Cliente,on_delete=models.CASCADE)
+    codigo=models.ForeignKey(Mascota,on_delete=models.CASCADE)
