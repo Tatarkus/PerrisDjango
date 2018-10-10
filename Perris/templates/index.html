@@ -24,14 +24,28 @@
 				<a href="#">QUIENES SOMOS</a>
 				<a href="#">SERVICIOS</a>
                 <a href="#">CONTACTANOS</a>
-                <a href="{% url 'clientes' %}">REGISTRO</a>
+				<a href="{% url 'clientes' %}">REGISTRO</a>
+			
 			</nav>
         </header>
+		<h1> {{titulo}}</h1> 
+<section>
+	<div class="container">
+		<div class="lista">
+			{% block Lista %}
+			{% endblock %}
 
 
-        <div>
-       
-         </div>
+		</div>
+
+		<div class="formulario"></div>
+			{% block Formulario %}
+			{% endblock %}
+		</div>
+
+	</div>
+</section>
+  
 
 		
 	

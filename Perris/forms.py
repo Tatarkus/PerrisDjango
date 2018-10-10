@@ -1,7 +1,7 @@
 from django import forms
 
 class FormCliente(forms.Form):
-    run=forms.CharField(widget=forms.TextInput(),required=True)
+    run=forms.CharField(widget=forms.TextInput(),label="RUN",required=True)
     nombre=forms.CharField(widget=forms.TextInput(),required=True)
     apellido=forms.CharField(widget=forms.TextInput(),required=True)
     telefono=forms.CharField(widget=forms.NumberInput(),required=True)
