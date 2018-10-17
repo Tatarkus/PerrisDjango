@@ -1,9 +1,10 @@
 from django import forms
 
-class FormCliente(forms.Form):
+class FormRegistroCliente(forms.Form):
 	run=forms.CharField(widget=forms.TextInput(),label="RUN",required=True)
 	nombre=forms.CharField(widget=forms.TextInput(),required=True)
 	apellido=forms.CharField(widget=forms.TextInput(),required=True)
+	usuario=forms.EmailField(widget=forms.EmailInput(),required=True)
 	usuario=forms.CharField(widget=forms.TextInput(),required=True)
 	password=forms.CharField(widget=forms.PasswordInput(),required=True)
 
