@@ -1,66 +1,50 @@
 <!doctype html>
 <html lang="es">
-<head>
-	 <meta charset="utf-8">
-	 <title>Página Muestra</title>
-	 <meta name="description" content="Pagina completa con Flexbox"><!--Utilizamos el descriptor en meta para apoyar la busqueda de contenidos en la web-->
-	 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0,maximun-scale=1.0,minimun-scale=1.0"><!--las escalas indican un punto inicial, la escala maxima y minima-->
-	 <link rel="stylesheet" href="../static/css/estilos.css">
-		 <link rel="stylesheet" href="css/jquery.bxslider.css">
- <script src="js/jquery.js"></script>
-	 <script src="js/jquery.bxslider.min.js"></script>
-	  <script src="js/codigo.js"></script>
-</head>
-	 <body>
-		  <div class="contenedor">
+	<head>
+		 <meta charset="utf-8">
+		 <title>Página Muestra</title>
+		 <meta name="description" content="Pagina completa con Flexbox"><!--Utilizamos el descriptor en meta para apoyar la busqueda de contenidos en la web-->
+		 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0,maximun-scale=1.0,minimun-scale=1.0"><!--las escalas indican un punto inicial,laescala maxima y minima-->
+		<link rel="stylesheet" href="../static/css/estilos.css">
+		<link rel="stylesheet" href="css/jquery.bxslider.css">
+	 	<script src="js/jquery.js"></script>
+		<script src="js/jquery.bxslider.min.js"></script>
+		<script src="js/codigo.js"></script>
+	</head>
+	<body>
 		<header>
-			<div class="logo">
-				<img src="images/logo.png" width="150" alt="">
-				<a href="#">MIS PERRIS</a>
+			<div class="contenedor">
+				<div class="logo">
+					<img src="images/logo.png" width="150" alt="">
+					<a href="#">MIS PERRIS</a>
+				</div>
+				<nav>
+					<a href="#">INICIO</a>
+					<a href="#">QUIENES SOMOS</a>
+					<a href="#">SERVICIOS</a>
+                	<a href="#">CONTACTANOS</a>
+                	<a href="{% url 'login' %}">INICIAR SESION</a>
+					<a href="{% url 'clientes' %}">REGISTRO</a>			
+				</nav>
 			</div>
-
-			<nav>
-				<a href="#">INICIO</a>
-				<a href="#">QUIENES SOMOS</a>
-				<a href="#">SERVICIOS</a>
-                <a href="#">CONTACTANOS</a>
-                <a href="{% url 'clientes' %}">INICIAR SESION</a>
-				<a href="{% url 'clientes' %}">REGISTRO</a>
-
-			
-			</nav>
         </header>
 		<h1> {{titulo}}</h1> 
-<section>
-	<div class="container">
-		<div class="lista">
-			{% block Lista %}
-			{% endblock %}
-
-
-		</div>
-
-		<div class="formulario"></div>
-			{% block Formulario %}
-			{% endblock %}
-		</div>
-
-	</div>
-</section>
-  
-
-		
-	
-
-
-		 
-
-			
-	
-		
+		<section>
+			<div class="container">
+				<div class="lista">
+					{% block Lista %}
+					{% endblock %}
+				</div>
+				<div class="formulario">
+					{% block Formulario %}
+					{% endblock %}
+				</div>
+				<div class="login_form">
+					{% block login %}
+					{% endblock %}
+				</div>
+			</div>
+		</section>
 		<footer> Desarrollo Web y Mobile  </footer>
-			
-		
-	
-	 </body>
+	</body>
 </html>
