@@ -5,11 +5,12 @@ from django.http import HttpResponse
 from .forms import FormCliente, Login
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Create your views here.
 
 def ingresar(request):
-    form=Login(request.POST or None)
+    form=Login(request.POST)
     if form.is_valid():
         data=form.cleaned_data
         user=authenticate(username=data.get("username"),password=data.get("password"))
@@ -34,16 +35,13 @@ def adopcion(request):
     }
     return HttpResponse(plantilla.render(contexto,request))
 
+def Bienvenido(request):  
+    plantilla=loader.get_template("index.html")
+    return render(request,"bienvenido.html")
+
+
 def cliente(request):    
-    form=FormCliente(request.POST)
-    if form.is_valid():
-        data=form.cleaned_data #crea lista con todos los datos
-        regDB=Cliente(run=data.get("run"),nombre=data.get("nombre"),apellido=data.get("apellido"),telefono=data.get("telefono"))
-        regDB.save()
-    form=FormCliente
-    clientes=Cliente.objects.all()
-   
-    return render(request,"cliente.html",{'clientes':clientes,'form':form},)
+    return render(request,"cliente.html")
 
 def index(request):
     return render(request,"index.html")

@@ -4,7 +4,8 @@ class FormCliente(forms.Form):
 	run=forms.CharField(widget=forms.TextInput(),label="RUN",required=True)
 	nombre=forms.CharField(widget=forms.TextInput(),required=True)
 	apellido=forms.CharField(widget=forms.TextInput(),required=True)
-	telefono=forms.CharField(widget=forms.NumberInput(),required=True)
+	usuario=forms.CharField(widget=forms.TextInput(),required=True)
+	password=forms.CharField(widget=forms.PasswordInput(),required=True)
 
 class FormMascota(forms.Form):
 	codigo=forms.CharField(widget=forms.TextInput(),required=True)
