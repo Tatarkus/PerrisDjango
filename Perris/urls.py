@@ -8,6 +8,6 @@ urlpatterns=[
     url(r'^login$',views.ingresar, name="login"),
     url(r'^mascota$',views.mascota, name="mascotas"),    
     url(r'^adopcion$',views.adopcion, name="adopcion"),   
-    url('',views.index, name="index"),  
+    url('index',views.index, name="index"),  
 
 ]

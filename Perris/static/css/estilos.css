@@ -157,7 +157,12 @@ header nav a {
 
 header nav a:hover {
 	background:#91dfcd;
-	color:black;
+	color:white;
+}
+/*cuando está seleccionada la opción*/
+header nav a.active {
+	background:#91efcc;
+	color:white;
 }
 
 .main {
