@@ -79,9 +79,21 @@
 	row, row-reverse, column, column-reverse flex directiion
 	nowrap,wrap,wrap-reverse
 	*/
-	flex-flow:row wrap;
 
 	justify-content:space-between;
+}
+
+.form {
+	background:#95d4b7;
+	display:flex;
+	flex-wrap: wrap;
+	flex-direction:column;
+	
+	width:100%;
+	max-width:25%;	
+		justify-content:space-between;
+
+
 }
 
 

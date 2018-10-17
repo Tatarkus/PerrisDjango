@@ -11,7 +11,7 @@
 		<script type="text/javascript" src="{{ STATIC_URL }} static/js/jquery.bxslider.min.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }} static/js/codigo.js"></script>
 
-		<!--BOOTSTRAP-->
+		 <!--BOOTSTRAP-->
 		<link rel="stylesheet" href="../static/css/bootstrap.min.css">
 		<script type="text/javascript" src="{{ STATIC_URL }} static/js/bootstrap.min.js"></script>
 		
@@ -42,16 +42,12 @@
 		<h1> {{titulo}}</h1> 
 		<section>
 			<div class="container">
-				
-				<div class="formulario">
-					{% block Formulario %}
-					{% endblock %}
-					{% block Login %}
-					{% endblock %}
-				</div>
-
-					
-
+          			<div class="form">	
+          				{% block Formulario %}
+          				{% endblock %}
+          				{% block Login %}
+          				{% endblock %}
+          			</div>
 			</div>
 		</section>
 		<footer> Desarrollo Web y Mobile  </footer>

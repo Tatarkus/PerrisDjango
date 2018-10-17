@@ -6,8 +6,12 @@ from .forms import FormRegistroCliente, Login
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
+from django.views.generic import CreateView
 # Create your views here.
+
+class ClienteCreateView(CreateView):
+    model = Cliente
+    campos = ('run','nombre','apellido','telefono')
 
 def ingresar(request):
     form=Login(request.POST)
