@@ -57,7 +57,7 @@
 	row, row-reverse, column, column-reverse flex directiion
 	nowrap,wrap,wrap-reverse
 	*/
-	flex-flow:row wrap;
+	flex-flow: wrap;
 
 	justify-content:space-between;
 }
@@ -131,6 +131,8 @@ aside{
 }
 
 header .logo {
+	margin-left: auto;
+	margin-right: auto;
 	color:#fff;
 	font-size:30px;
 }
@@ -147,7 +149,7 @@ header .logo a {
 }
 
 header nav {
-	width:50%;
+	width:100%;
 	/* Flexbox */
 
 	display:flex;
@@ -310,7 +312,7 @@ footer .social a {
 	header {
 		background-color:blue;
 		
-}}
+}
 
 	header {
 		flex-direction:column;
@@ -354,7 +356,7 @@ footer .social a {
 		width:100%;
 	}
 
-
+}
 @media screen and (max-width: 600px) {
 	aside {
 		flex-direction:column;
