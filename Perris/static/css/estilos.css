@@ -82,18 +82,24 @@
 
 	justify-content:space-between;
 }
+input{
+	background-color:red;
+}
 
-.form {
+.form{
 	background:#95d4b7;
 	display:flex;
 	flex-wrap: wrap;
-	flex-direction:column;
+	flex-direction:row;
 	
 	width:100%;
 	max-width:25%;	
 		justify-content:space-between;
 
 
+}
+input {
+	background-color:blue;
 }
 
 
