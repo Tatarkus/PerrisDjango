@@ -9,5 +9,6 @@ urlpatterns=[
     url(r'^mascota$',views.mascota, name="mascotas"),    
     url(r'^adopcion$',views.adopcion, name="adopcion"),   
     url('index',views.index, name="index"), 
+	url('inicio',views.inicio, name="inicio"), 
 
 ]

@@ -31,7 +31,7 @@
 					<a href="#">MIS PERRIS</a>
 				</div>
 				<nav>
-					<a class="opc active" href="#">INICIO</a>
+					<a class="opc active" href="{% url 'inicio' %}">INICIO</a>
 					<a class="opc" href="#">QUIENES SOMOS</a>
 					<a class="opc" href="#">SERVICIOS</a>
                 	<a class="opc" href="#">CONTACTANOS</a>
@@ -43,7 +43,9 @@
 		<h1> {{titulo}}</h1> 
 		<section>
 			<div class="container">
-          			<div class="form">	
+          			<div class="form">
+						{% block inicio %}
+          				{% endblock %}					
           				{% block Formulario %}
           				{% endblock %}
           				{% block Login %}
