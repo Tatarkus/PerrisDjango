@@ -21,7 +21,7 @@ def ingresar(request):
         user=authenticate(username=data.get("username"),password=data.get("password"))
         if user is not None:
             login(request,user)
-            return redirect('login.html')
+            return render(request,"login.html",{'form':form,'active_tab':active_tab})
     return render(request,"login.html",{'form':form,'active_tab':active_tab})
 
 def mascota(request):
