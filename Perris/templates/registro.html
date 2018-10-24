@@ -1,13 +1,11 @@
 {%extends 'index.html'%}
-{% load crispy_forms_tags %}
 {%block Formulario%}
-
+{% load crispy_forms_tags %}
 <h2>Registro de Usuario</h2>
 
 
 <form action="{% url 'registro' %}" method="post">
-	{% csrf_token %}
-	{{ form|crispy }}
+	{% crispy form %}
 	<input type="submit" class="form-control" value="Enviar">
 
     

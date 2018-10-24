@@ -12,7 +12,7 @@ class FormRegistroCliente(forms.ModelForm):
                   'telefono',
                  )
 
-    def __init__(self, *args, submit_title="儲存編輯", **kwargs):
+    def __init__(self, *args, submit_title="enviar", **kwargs):
         super().__init__(*args, **kwargs)
         my_field_text= [
             # (field_name, Field title label, Detailed field description)

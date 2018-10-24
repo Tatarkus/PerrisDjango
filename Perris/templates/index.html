@@ -9,7 +9,6 @@
 		 <!--jQuery y otros scripts-->
 		<script type="text/javascript" src="{{ STATIC_URL }} static/js/prefix.js"></script>
 	 	<script type="text/javascript" src="{{ STATIC_URL }} static/js/jquery.js"></script>
-		<script type="text/javascript" src="{{ STATIC_URL }} static/js/jquery.bxslider.min.js"></script>
 		<script type="text/javascript" src="{{ STATIC_URL }} static/js/codigo.js"></script>
 
 		 <!--BOOTSTRAP-->
@@ -19,8 +18,6 @@
 
 		<!--CSS y CAROUSEL-->
 		<link rel="stylesheet" href="../static/css/estilos.css">
-		<link rel="stylesheet" href="../static/css/jquery.bxslider.css">
-
 
 	</head>
 	<body>
@@ -31,27 +28,28 @@
 					<a href="#">MIS PERRIS</a>
 				</div>
 				<nav>
-					<a class="opc active" href="#">INICIO</a>
+					<a class="opc active" href="{% url 'inicio' %}">INICIO</a>
 					<a class="opc" href="#">QUIENES SOMOS</a>
 					<a class="opc" href="#">SERVICIOS</a>
                 	<a class="opc" href="#">CONTACTANOS</a>
                 	<a class="opc" href="{% url 'login' %}">INICIAR SESION</a>
 					<a class="opc" href="{% url 'registro' %}">REGISTRO</a>			
 				</nav>
-			</div>
-        </header>
+			</header>
+		</div>
+        	
 		<h1> {{titulo}}</h1> 
 		<section>
 			<div class="container">
           			<div class="forma">	
+          				{% block inicio %}
+          				{% endblock %}
           				{% block Formulario %}
           				{% endblock %}
           				{% block Login %}
           				{% endblock %}
           			</div>
 			</div>
-
-	<input type="text"  value="asdsad">
 		</section>
 		<footer> Desarrollo Web y Mobile  </footer>
 	</body>
