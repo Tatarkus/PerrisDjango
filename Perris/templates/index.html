@@ -16,7 +16,7 @@
 		<script type="text/javascript" src="{{ STATIC_URL }} static/js/bootstrap.min.js"></script>
 		
 
-		<!--CSS y CAROUSEL-->
+		<!--CSS-->
 		<link rel="stylesheet" href="../static/css/estilos.css">
 
 	</head>
@@ -41,9 +41,10 @@
 		<h1> {{titulo}}</h1> 
 		<section>
 			<div class="container">
+				    {% block inicio %}
+          			{% endblock %}
           			<div class="forma">	
-          				{% block inicio %}
-          				{% endblock %}
+
           				{% block Formulario %}
           				{% endblock %}
           				{% block Login %}

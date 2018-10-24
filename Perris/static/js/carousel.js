@@ -7,11 +7,11 @@ document.write('\
   </ol>\
   <div class="carousel-inner">\
     <div class="carousel-item active">\
-      <img class="d-block w-100" src=""../static/images/car_img/01.png"" alt="First slide">\
+      <img class="d-block w-100" src="../static/images/car_img/01.jpg" alt="">\
     </div>\
     <div class="carousel-item">\
       <a href="#main">\
-      <img class="d-block w-100" src=""../static/images/car_img/02.png"" alt="Second slide">\
+      <img class="d-block w-100" src="../static/images/car_img/02.jpg" alt="">\
       </a>\
     </div>\
   </div>\
