@@ -15,13 +15,14 @@ class ClienteCreateView(CreateView):
 
 def ingresar(request):
     form=Login(request.POST)
+    active_tab = 'tab5'
     if form.is_valid():
         data=form.cleaned_data
         user=authenticate(username=data.get("username"),password=data.get("password"))
         if user is not None:
             login(request,user)
             return redirect('gestionarUsuarios')
-    return render(request,"login.html",{'form':form,})
+    return render(request,"login.html",{'form':form,'active_tab':active_tab})
 
 def mascota(request):
     mascotas=Mascota.objects.all()
@@ -47,6 +48,7 @@ def registrar(request):
     return render(request,"registro.html")
 
 def registro(request):    
+    active_tab = 'tab6'
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = FormRegistroCliente(request.POST)
@@ -60,10 +62,12 @@ def registro(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = FormRegistroCliente()
-    return render(request, 'registro.html', {'form': form})
+    return render(request, 'registro.html', {'form': form,'active_tab':active_tab})
 
 def index(request):
-    return render(request,"index.html")
+    active_tab = 'tab1'
+    return render(request,"index.html", {'active_tab':active_tab})
 	
 def inicio(request):
-    return render(request,"inicio.html")
+    active_tab = 'tab1'
+    return render(request,"inicio.html", {'active_tab':active_tab})

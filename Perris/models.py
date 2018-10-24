@@ -6,7 +6,7 @@ class Cliente(models.Model):
 	run=models.CharField(max_length=9,primary_key=True)
 	nombre=models.CharField(max_length=30)
 	apellido=models.CharField(max_length=30)
-	telefono=models.IntegerField(max_length=9)
+	telefono=models.IntegerField()
 
 class Mascota(models.Model):
 	codigo=models.AutoField(primary_key=True)
