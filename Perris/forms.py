@@ -8,11 +8,12 @@ class FormRegistroCliente(forms.ModelForm):
         model = Cliente
         # specify what fields should be used in this form.
         fields = ('run',
-                  'nombre', 'apellido',
+                    'user',
+                  'nombre', 'apellido','email',
                   'telefono',
                  )
 
-    def __init__(self, *args, submit_title="enviar", **kwargs):
+    def __init__(self, *args, submit_title="Enviar", **kwargs):
         super().__init__(*args, **kwargs)
         my_field_text= [
             # (field_name, Field title label, Detailed field description)
@@ -32,7 +33,7 @@ class FormRegistroCliente(forms.ModelForm):
                 css_class = 'row'
             )
         )           
-        self.helper.add_input(Submit('submit', submit_title))
+        self.helper.add_input(Submit('POST', submit_title))
 
 class FormRegistroClienteDos(forms.Form):
 	run=forms.CharField(widget=forms.TextInput(attrs={'class':'input'}),label="RUN",required=True)

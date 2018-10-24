@@ -40,27 +40,36 @@ def adopcion(request):
     }
     return HttpResponse(plantilla.render(contexto,request))
 
-def bienvenido(request):  
-    plantilla=loader.get_template("index.html")
-    return render(request,"bienvenido.html")
+def clientes(request):  
+    lista = Clientes.objects.all()
+    return render(request, 'clientes.html', {'lista':lista})
+
 
 def registrar(request):    
     return render(request,"registro.html")
 
 def registro(request):    
     active_tab = 'tab6'
+    print("REQUEST")
     if request.method == 'POST':
+        print("POST")
         # create a form instance and populate it with data from the request:
         form = FormRegistroCliente(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
+            print("FORMA VALIDA")
+            data=form.cleaned_data
+            regDB=User.objects.create_user(data.get("run"),data.get("email"),data.get("password"))
+            Cliente=Cliente(user=regDB,nombre=data.get("nombre"),apellido=data.get("apellido"),email=data.get("email"),telefono=data.get("telefono"))
+            regDB.save()
+            usuario.save()
+            lista = Clientes.objects.all()
+            active_tab = 'tab1'
+            return render(request, 'clientes.html', {'lista':lista,'active_tab':active_tab})
 
     # if a GET (or any other method) we'll create a blank form
     else:
+        print("NO ES POST")
         form = FormRegistroCliente()
     return render(request, 'registro.html', {'form': form,'active_tab':active_tab})
 
