@@ -8,7 +8,6 @@ class FormRegistroCliente(forms.ModelForm):
         model = Cliente
         # specify what fields should be used in this form.
         fields = ('run',
-                    'user',
                   'nombre', 'apellido','email',
                   'telefono',
                  )
