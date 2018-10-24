@@ -57,9 +57,9 @@ def registro(request):
             print("FORMA VALIDA")
             data=form.cleaned_data
             regDB=User.objects.create_user(data.get("run"),data.get("email"),data.get("password"))
-            Cliente=Cliente(user=regDB,nombre=data.get("nombre"),apellido=data.get("apellido"),email=data.get("email"),telefono=data.get("telefono"))
+            cliente=Cliente(user=regDB,nombre=data.get("nombre"),apellido=data.get("apellido"),email=data.get("email"),telefono=data.get("telefono"))
             regDB.save()
-            usuario.save()
+            cliente.save()
             lista = Clientes.objects.all()
             active_tab = 'tab1'
             return render(request, 'clientes.html', {'lista':lista,'active_tab':active_tab})
