@@ -2,7 +2,7 @@ from django.shortcuts import render, render_to_response
 from .models import Cliente, Mascota,Adopcion
 from django.template import loader,RequestContext
 from django.http import HttpResponse
-from .forms import FormRegistroCliente, Login
+from .forms import FormRegistroCliente, Login, FormRegistroUsuario
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -52,6 +52,7 @@ def registro(request):
         print("POST")
         # create a form instance and populate it with data from the request:
         form = FormRegistroCliente(request.POST)
+		
         # check whether it's valid:
         if form.is_valid():
             print("FORMA VALIDA")
@@ -68,7 +69,7 @@ def registro(request):
     else:
         print("NO ES POST")
         form = FormRegistroCliente()
-    return render(request, 'registro.html', {'form': form,'active_tab':active_tab})
+    return render(request, 'registro.html', {'form': form,'active_tab':active_tab,'form2':formUsr})
 
 def index(request):
     active_tab = 'tab1'

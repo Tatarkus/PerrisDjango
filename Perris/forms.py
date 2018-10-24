@@ -2,6 +2,7 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Div
 from .models import Cliente
+from django.contrib.auth.models import User
 
 class FormRegistroCliente(forms.ModelForm):
     class Meta:
@@ -34,13 +35,20 @@ class FormRegistroCliente(forms.ModelForm):
         )           
         self.helper.add_input(Submit('POST', submit_title))
 
-class FormRegistroClienteDos(forms.Form):
-	run=forms.CharField(widget=forms.TextInput(attrs={'class':'input'}),label="RUN",required=True)
-	nombre=forms.CharField(widget=forms.TextInput(),required=True)
-	apellido=forms.CharField(widget=forms.TextInput(),required=True)
-	mail=forms.EmailField(widget=forms.EmailInput(),required=True)
-	usuario=forms.CharField(widget=forms.TextInput(),required=True)
-	password=forms.CharField(widget=forms.PasswordInput(),required=True)
+class FormRegistroUsuario(forms.ModelForm):
+    class Meta:
+        model = User
+        # specify what fields should be used in this form.
+        fields = ('email',
+                  'username', 'password',
+                 )
+
+    def __init__(self, *args, submit_title="Enviar", **kwargs):
+        super().__init__(*args, **kwargs)
+    # Set layout for fields.
+        self.helper=FormHelper()
+
+
 
 class FormMascota(forms.Form):
 	codigo=forms.CharField(widget=forms.TextInput(),required=True)
