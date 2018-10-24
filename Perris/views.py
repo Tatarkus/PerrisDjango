@@ -21,7 +21,7 @@ def ingresar(request):
         user=authenticate(username=data.get("username"),password=data.get("password"))
         if user is not None:
             login(request,user)
-            return redirect('gestionarUsuarios')
+            return redirect('login.html')
     return render(request,"login.html",{'form':form,'active_tab':active_tab})
 
 def mascota(request):
@@ -44,9 +44,6 @@ def clientes(request):
     lista = Clientes.objects.all()
     return render(request, 'clientes.html', {'lista':lista})
 
-
-def registrar(request):    
-    return render(request,"registro.html")
 
 def registro(request):    
     active_tab = 'tab6'
