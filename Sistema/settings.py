@@ -122,3 +122,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#Emaill Sender
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com' #host que usas para enviar los correos. uso gmail porque no requiere extra configuracion
+EMAIL_PORT = 587 #cualquiera que se ponga aca debe ser abierto en el firewall, de otra forma no sirve
+EMAIL_HOST_USER = 'hnslezana@gmail.com' #usuario que creas en el hosting. debe ser valido, puede ser cualquiera, este es uno que no ocupo
+EMAIL_HOST_PASSWORD = 'cdhaxteam4' #contraseña del login que tienes en el hosting. debe ser valido
+DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>' #sin esta linea el correo no se envia, no se si es por gmail o es para todo
