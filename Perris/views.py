@@ -52,7 +52,6 @@ def registro(request):
         print("POST")
         # create a form instance and populate it with data from the request:
         form = FormRegistroCliente(request.POST)
-		
         # check whether it's valid:
         if form.is_valid():
             print("FORMA VALIDA")
@@ -64,9 +63,9 @@ def registro(request):
             lista = Clientes.objects.all()
             active_tab = 'tab1'
             return render(request, 'clientes.html', {'lista':lista,'active_tab':active_tab})
-
     # if a GET (or any other method) we'll create a blank form
     else:
+        formUsr = FormRegistroUsuario()
         print("NO ES POST")
         form = FormRegistroCliente()
     return render(request, 'registro.html', {'form': form,'active_tab':active_tab,'form2':formUsr})

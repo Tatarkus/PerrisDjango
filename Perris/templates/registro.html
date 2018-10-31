@@ -3,7 +3,14 @@
 {% load crispy_forms_tags %}
 <h2>Registro de Usuario</h2>
 
+<section class="contenedor_formas">
+	<div class="forma1">
+		{% crispy form %}
+	</div>
 
-	{% crispy form %}
+	<div class="forma2">
+		{% crispy form2 %}
+	</div>
+</section>
 
 {% endblock %}

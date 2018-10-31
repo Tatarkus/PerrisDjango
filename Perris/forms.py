@@ -47,6 +47,7 @@ class FormRegistroUsuario(forms.ModelForm):
         super().__init__(*args, **kwargs)
     # Set layout for fields.
         self.helper=FormHelper()
+        self.fields['username'].help_text = None
 
 
 
