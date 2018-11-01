@@ -15,9 +15,9 @@
 	height: 400px;
 }
 
-.forma1 {
-    float: left;
-    width: 60%;
+.forma {
+    margin: auto;
+    
 }
 .forma2 {
 	height: 100%;
