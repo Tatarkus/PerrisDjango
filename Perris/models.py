@@ -1,14 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import RegexValidator
 
-# Create your models here.
 class Cliente(models.Model):
-	user=models.OneToOneField(User, on_delete = models.CASCADE)
-	run = nombre=models.CharField(max_length=30)
-	nombre=models.CharField(max_length=30)
-	apellido=models.CharField(max_length=30)
-	email=models.EmailField(max_length=30)
-	telefono=models.IntegerField()
+	user= models.OneToOneField(User, on_delete = models.CASCADE)
+	run = models.CharField('RUN',max_length=30)
+	fono_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',message="Telefono debe estar en el formato correcto '+999999999'")
+	fono_numero = models.CharField('Telefono',validators=[fono_regex], max_length=17, blank=True)
 
 	def __str__(self):
 		datos = {

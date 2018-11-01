@@ -2,7 +2,7 @@ from django.shortcuts import render, render_to_response
 from .models import Cliente, Mascota,Adopcion
 from django.template import loader,RequestContext
 from django.http import HttpResponse
-from .forms import FormRegistroCliente, Login, FormRegistroUsuario
+from .forms import FormRegistroCliente, Login
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -65,10 +65,9 @@ def registro(request):
             return render(request, 'clientes.html', {'lista':lista,'active_tab':active_tab})
     # if a GET (or any other method) we'll create a blank form
     else:
-        formUsr = FormRegistroUsuario()
         print("NO ES POST")
         form = FormRegistroCliente()
-    return render(request, 'registro.html', {'form': form,'active_tab':active_tab,'form2':formUsr})
+    return render(request, 'registro.html', {'form': form,'active_tab':active_tab})
 
 def index(request):
     active_tab = 'tab1'

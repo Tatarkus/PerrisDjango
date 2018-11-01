@@ -1,64 +1,58 @@
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Div
+from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Div, HTML
 from .models import Cliente
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User          
 
-class FormRegistroCliente(forms.Form):
+class FormRegistroCliente(forms.ModelForm):
+    run =forms.CharField(widget=forms.PasswordInput(),label="RUN")
+    password2 =forms.CharField(widget=forms.PasswordInput(),label="Confirmar contraseña")
+    fono_numero =forms.CharField(widget=forms.PasswordInput(),label="Telefono",required=False)
 
-    run=forms.CharField(widget=forms.TextInput(),label="RUN")
-    nombre=forms.CharField(widget=forms.TextInput(),label="Nombre Usuario")
-    apellido=forms.CharField(widget=forms.TextInput(),label="Apellido")
-    mail=forms.EmailField(widget=forms.TextInput(),label="Correo Electronico")
-    telefono=forms.CharField(widget=forms.TextInput(),label="Telefono")
-    username=forms.CharField(widget=forms.TextInput(),label="Usuario")
-    password=forms.CharField(widget=forms.PasswordInput(),label="Contraseña")
-    password2=forms.CharField(widget=forms.PasswordInput(),label="Confirmar Contraseña")
-
+    class Meta:
+        model = User
+        # specify what fields should be used in this form.
+        fields = ('email',
+                  'username', 'password','first_name','last_name','password2',
+                 )
 
     def __init__(self, *args, submit_title="Enviar", **kwargs):
         super().__init__(*args, **kwargs)
-
         self.helper=FormHelper()
-        self.fields['password'].help_text = "La contraseña debe contener mínimo 4 caracteres."
+        self.fields['username'].label = 'Nombre de usuario'
+        self.fields['username'].help_text = None
+        self.fields['password'].label = 'Contraseña'
+        self.fields['first_name'].label = 'Nombre'
+        self.fields['email'].label = 'Correo electrónico'
+        self.fields['last_name'].label = 'Apellido'
+
+
         self.helper.layout = Layout(
             Div(
                 Div('run', css_class="col-sm-6"),
-                Div('mail', css_class="col-sm-6"),
-                css_class = 'row'
-            ),
-            Div(
-                Div('nombre', css_class="col-sm-6"),
-                Div('apellido', css_class="col-sm-6"),
+                Div('fono_numero', css_class="col-sm-6"),
                 css_class = 'row'
             ),
             Div(
                 Div('username', css_class="col-sm-6"),
-                Div('telefono', css_class="col-sm-6"),
+                Div('email', css_class="col-sm-6"),
+                css_class = 'row'
+            ),
+            Div(
+                Div('first_name', css_class="col-sm-6"),
+                Div('last_name', css_class="col-sm-6"),
                 css_class = 'row'
             ),
             Div(
                 Div('password', css_class="col-sm-6"),
                 Div('password2', css_class="col-sm-6"),
                 css_class = 'row'
+            ),
+            ButtonHolder(
+                        Submit('save', 'Save')
             )
-        )           
-        self.helper.add_input(Submit('POST', submit_title))
-
-class FormRegistroUsuario(forms.ModelForm):
-    class Meta:
-        model = User
-        # specify what fields should be used in this form.
-        fields = ('email',
-                  'username', 'password',
-                 )
-
-    def __init__(self, *args, submit_title="Enviar", **kwargs):
-        super().__init__(*args, **kwargs)
-    # Set layout for fields.
-        self.helper=FormHelper()
-        self.fields['username'].help_text = None
-
+        )
+       
 
 
 class FormMascota(forms.Form):
