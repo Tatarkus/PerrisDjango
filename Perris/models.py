@@ -18,11 +18,13 @@ class Cliente(models.Model):
 		}
 		return datos
 
-class Mascota(models.Model):
+class Rescatado(models.Model):
 	codigo=models.AutoField(primary_key=True)
 	nombre=models.CharField(max_length=30)
-	color=models.CharField(max_length=20)
+	raza=models.CharField(max_length=20)	
+	descripcion=models.CharField(max_length=20)
+	estado=models.CharField(max_length=20)
 
 class Adopcion(models.Model):
 	run=models.ForeignKey(Cliente,on_delete=models.CASCADE)
-	codigo=models.ForeignKey(Mascota,on_delete=models.CASCADE)
+	codigo=models.ForeignKey(Rescatado,on_delete=models.CASCADE)

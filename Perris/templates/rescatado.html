@@ -1,0 +1,38 @@
+{%extends 'index.html'%}
+{% block Rescatado %}
+{% load crispy_forms_tags %}
+<h2>Registro de Rescatados</h2>
+
+<div class=centrado>
+    <form method="post" action="">
+        
+	{% csrf_token %}
+    {% crispy form %}
+  
+</form>    
+
+
+    
+</div>
+{% endblock %}
+
+{% block ListaRes %}
+{% if lista  %}
+ {% for r in lista %}
+<div class="lista">
+<div class="reg" style="font-weight: bold; font-size:20px;">
+<div class="camp">Nombre</div><div class="camp">Raza</div><div class="camp">Descripción </div><div class="camp">Estado </div>
+</div>
+<div class="reg">
+<div class="camp">{{r.nombre}}</div><div class="camp">{{r.raza}}</div><div class="camp">{{r.descripcion}}</div><div>{{r.estado}}</div>
+</div>
+</div>
+  {%endfor%}
+
+
+{%else%}
+
+<h2>No hay rescatados</h2>
+
+{%endif%}
+{%endblock%}

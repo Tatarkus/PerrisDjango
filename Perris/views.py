@@ -1,8 +1,8 @@
 from django.shortcuts import render, render_to_response
-from .models import Cliente, Mascota,Adopcion
+from .models import Cliente, Rescatado,Adopcion
 from django.template import loader,RequestContext
 from django.http import HttpResponse
-from .forms import FormRegistroCliente, Login
+from .forms import FormRegistroCliente, FormRescatado, Login
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -24,13 +24,19 @@ def ingresar(request):
             return render(request,"login.html",{'form':form,'active_tab':active_tab})
     return render(request,"login.html",{'form':form,'active_tab':active_tab})
 
-def mascota(request):
-    mascotas=Mascota.objects.all()
-    plantilla=loader.get_template("mascota.html")
-    contexto={
-        'mascotas:':Mascota.objects.all(),
-    }
-    return HttpResponse(plantilla.render(contexto,request))
+def rescatado(request): 
+
+    lista=Rescatado.objects.all()   
+    form = FormRescatado(request.POST)
+    if form.is_valid():
+        data=form.cleaned_data
+        regDB=Rescatado(nombre=data.get("nombre"),raza=data.get("raza"),descripcion=data.get("descripcion"),estado=data.get("estado"))
+        regDB.save
+    lista=Rescatado.objects.all() 
+   
+    
+
+    return render(request,'rescatado.html',{'lista':lista,'form':form})
 
 def adopcion(request):  
 

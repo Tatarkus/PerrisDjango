@@ -1,7 +1,7 @@
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Div, HTML
-from .models import Cliente
+from .models import Cliente,Rescatado
 from django.contrib.auth.models import User          
 
 class FormRegistroCliente(forms.ModelForm):
@@ -55,10 +55,39 @@ class FormRegistroCliente(forms.ModelForm):
        
 
 
-class FormMascota(forms.Form):
-	codigo=forms.CharField(widget=forms.TextInput(),required=True)
-	nombre=forms.CharField(widget=forms.TextInput(),required=True)
-	color=forms.CharField(widget=forms.TextInput(),required=True)
+class FormRescatado(forms.ModelForm):
+
+    class Meta:
+        model = Rescatado
+        fields = ('nombre',
+                  'raza','descripcion','estado',
+                 )
+    
+    def __init__(self, *args, submit_title="Enviar", **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper=FormHelper()
+        self.fields['nombre'].label = 'Nombre de rescatado'
+        self.fields['raza'].label = 'Raza'
+        self.fields['descripcion'].label = 'Descripción'
+        self.fields['estado'].label = 'Estado'
+
+        self.helper.layout = Layout(
+            Div(
+                Div('nombre', css_class="col-sm-6"),
+                Div('raza', css_class="col-sm-6"),
+                css_class = 'row'
+            ),
+            Div(
+                Div('descripcion', css_class="col-sm-6"),
+                Div('estado', css_class="col-sm-6"),
+                css_class = 'row'
+            ),
+            ButtonHolder(
+                        Submit('save', 'Save')
+            )
+        )
+
+
 
 class FormAdopcion(forms.Form):
 	run=forms.CharField(widget=forms.TextInput(),required=True)
