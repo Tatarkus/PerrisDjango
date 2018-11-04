@@ -24,10 +24,10 @@ def ingresar(request):
             return render(request,"login.html",{'form':form,'active_tab':active_tab})
     return render(request,"login.html",{'form':form,'active_tab':active_tab})
 
-def rescatado(request): 
+def agregar_rescatado(request): 
 
     form=FormRescatado(request.POST) 
-    if(request.method=="POST"):
+    if(request.method=='POST'):
 
         if form.is_valid():  
             data=form.cleaned_data
@@ -35,8 +35,31 @@ def rescatado(request):
             regDB.save()
     else:
         form=FormRescatado()       
-    lista=Rescatado.objects.all() 
-    return render(request,'rescatado.html',{'lista':lista,'form':form})
+    return render(request,'rescatado.html',{'form':form})
+
+def listar_rescatados(request):
+    
+    lista=Rescatado.objects.all()
+    return render(request,'lista_rescatados.html',{'lista':lista})
+
+def modificar_rescatado(request,codigo):
+    rescatado=Rescatado.objects.get(codigo=codigo)
+    if request.method=='GET':
+        form=FormRescatado(instance=rescatado)
+    else:
+        form=FormRescatado(request.POST,instance=rescatado)
+        if form.is_valid():
+            form.save()
+    return render(request,'rescatado.html',{'form':form})
+
+def eliminar_rescatado(request,codigo):
+    rescatado=Rescatado.objects.get(codigo=codigo)
+    if request.method=='POST':
+        rescatado.delete()
+    return render(request,'eliminar_rescatado.html',{'rescatado':rescatado})
+
+
+
 
 def adopcion(request):  
 

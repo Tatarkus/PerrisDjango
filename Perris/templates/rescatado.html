@@ -13,25 +13,3 @@
 </div>
 {% endblock %}
 
-{% block ListaRes %}
-{% if lista  %}
-<div class="lista">
-    <div class="reg" style="font-weight: bold; font-size:20px;">
-    <div class="camp">Nombre</div><div class="camp">Raza</div><div class="camp">Descripción </div><div class="camp">Estado </div>
-</div>  </div>
-
- {% for r in lista %}
- <div class="lista">
-<div class="reg">
-<div class="camp">{{r.nombre}}</div><div class="camp">{{r.raza}}</div><div class="camp">{{r.descripcion}}</div><div>{{r.estado}}</div>
-</div>
-</div>
-  {%endfor%}
-
-
-{%else%}
-
-<h2>No hay rescatados</h2>
-
-{%endif%}
-{%endblock%}
