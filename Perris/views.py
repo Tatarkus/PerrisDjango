@@ -26,16 +26,16 @@ def ingresar(request):
 
 def rescatado(request): 
 
-    lista=Rescatado.objects.all()   
-    form = FormRescatado(request.POST)
-    if form.is_valid():
-        data=form.cleaned_data
-        regDB=Rescatado(nombre=data.get("nombre"),raza=data.get("raza"),descripcion=data.get("descripcion"),estado=data.get("estado"))
-        regDB.save
-    lista=Rescatado.objects.all() 
-   
-    
+    form=FormRescatado(request.POST) 
+    if(request.method=="POST"):
 
+        if form.is_valid():  
+            data=form.cleaned_data
+            regDB=Rescatado(nombre=data.get("nombre"),raza=data.get("raza"),descripcion=data.get("descripcion"),estado=data.get("estado"))
+            regDB.save()
+    else:
+        form=FormRescatado()       
+    lista=Rescatado.objects.all() 
     return render(request,'rescatado.html',{'lista':lista,'form':form})
 
 def adopcion(request):  
