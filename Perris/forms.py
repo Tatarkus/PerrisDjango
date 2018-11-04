@@ -5,9 +5,9 @@ from .models import Cliente
 from django.contrib.auth.models import User          
 
 class FormRegistroCliente(forms.ModelForm):
-    run =forms.CharField(widget=forms.PasswordInput(),label="RUN")
+    run =forms.CharField(widget=forms.TextInput(),label="RUN")
     password2 =forms.CharField(widget=forms.PasswordInput(),label="Confirmar contraseña")
-    fono_numero =forms.CharField(widget=forms.PasswordInput(),label="Telefono",required=False)
+    fono_numero =forms.CharField(widget=forms.TextInput(),label="Telefono",required=False)
 
     class Meta:
         model = User
@@ -16,12 +16,14 @@ class FormRegistroCliente(forms.ModelForm):
                   'username', 'password','first_name','last_name','password2',
                  )
 
+
     def __init__(self, *args, submit_title="Enviar", **kwargs):
         super().__init__(*args, **kwargs)
         self.helper=FormHelper()
         self.fields['username'].label = 'Nombre de usuario'
         self.fields['username'].help_text = None
         self.fields['password'].label = 'Contraseña'
+        self.fields['password'].widget = forms.PasswordInput()
         self.fields['first_name'].label = 'Nombre'
         self.fields['email'].label = 'Correo electrónico'
         self.fields['last_name'].label = 'Apellido'
