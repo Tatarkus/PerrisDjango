@@ -19,11 +19,16 @@ class Cliente(models.Model):
 		return datos
 
 class Rescatado(models.Model):
+	ESTADOS=(
+		('Disponible','Disponible'),
+		('Adoptado','Adoptado'),
+		('Rescatado','Rescatado'),
+	)
 	codigo=models.AutoField(primary_key=True)
 	nombre=models.CharField(max_length=30)
 	raza=models.CharField(max_length=20)	
 	descripcion=models.CharField(max_length=20)
-	estado=models.CharField(max_length=20)
+	estado=models.CharField(max_length=20, choices= ESTADOS)
 
 class Adopcion(models.Model):
 	run=models.ForeignKey(Cliente,on_delete=models.CASCADE)
