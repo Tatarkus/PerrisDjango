@@ -122,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,"Perris/static")
 MEDIA_ROOT = os.path.join(BASE_DIR,"Perris/media")
 MEDIA_URL = "/media/"
 
@@ -133,7 +134,6 @@ EMAIL_HOST_USER = 'hnslezana@gmail.com' #usuario que creas en el hosting. debe s
 EMAIL_HOST_PASSWORD = 'cdhaxteam4' #contraseña del login que tienes en el hosting. debe ser valido
 DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>' #sin esta linea el correo no se envia, no se si es por gmail o es para todo
 
-print ("base dir path", BASE_DIR)
-print ("media url path", MEDIA_URL)
-print ("media root path", MEDIA_ROOT)
+print ("static dir path", STATIC_URL)
+
 
