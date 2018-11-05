@@ -37,7 +37,7 @@
     </td>
     {% elif r.estado == 'Disponible' %}
           <td>
-    <a class="btn btn-primary" href="{% url 'modificar_rescatado' r.codigo %}"role="button">Adoptar</a>
+    <a class="btn btn-primary" href="{% url 'adoptar' r.codigo %}"role="button">Adoptar</a>
     </td>
       {% endif %}
     </tr>

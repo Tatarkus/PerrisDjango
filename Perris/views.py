@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response
-from .models import Cliente, Rescatado,Adopcion
+from .models import Cliente, Rescatado,Adopcion 
 from django.template import loader,RequestContext
 from django.http import HttpResponse
 from .forms import FormRegistroCliente, FormRescatado, FormLogin
@@ -72,13 +72,20 @@ def eliminar_rescatado(request,codigo):
 
 
 
-def adopcion(request):  
+def adopcion(request, codigo):  
 
-    plantilla=loader.get_template("mascota.html")
-    contexto={
-        'adopciones:':Adopcion.objects.all(),
-    }
-    return HttpResponse(plantilla.render(contexto,request))
+    #plantilla=loader.get_template("mascota.html")
+    rescatado=Rescatado.objects.get(codigo=codigo)
+    cliente = Cliente.objects.get(user = request.user)
+    #contexto={
+    #    'adopciones:':Adopcion.objects.all(),
+    #}
+    adopcion = Adopcion(run=cliente,codigo=rescatado)
+    rescatado.estado = 'Adoptado'
+    rescatado.save()
+    adopcion.save()
+    return render(request, 'adopcion.html', {'rescatado':rescatado})
+
 
 def clientes(request):  
     lista = Clientes.objects.all()

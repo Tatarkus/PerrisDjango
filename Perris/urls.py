@@ -17,6 +17,7 @@ urlpatterns=[
     #url(r'^accounts/login/$',views.ingresar,name="login"), #redireccion apropiada, django por defecto te envia a esa url, mat:de donde te envia a usa url?
     url(r'^login$',views.ingresar,name="login"),
     url(r'^salir$',views.salir,name="salir"),
+    url(r'^adoptar/(?P<codigo>\d+)/$',views.adopcion,name="adoptar"),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 
