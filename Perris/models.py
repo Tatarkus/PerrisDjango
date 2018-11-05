@@ -14,7 +14,7 @@ class Cliente(models.Model):
 			'nombre':self.nombre,
 			'apellido':self.apellido,
 			'email':self.email,
-			'telefono':self.telefono
+			'telefono':self.fono_numero
 		}
 		return datos
 

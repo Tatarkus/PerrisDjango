@@ -2,7 +2,7 @@ from django.shortcuts import render, render_to_response
 from .models import Cliente, Mascota,Adopcion
 from django.template import loader,RequestContext
 from django.http import HttpResponse
-from .forms import FormRegistroCliente, Login
+from .forms import FormRegistroCliente, FormLogin
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -14,15 +14,26 @@ class ClienteCreateView(CreateView):
     campos = ('run','nombre','apellido','telefono')
 
 def ingresar(request):
-    form=Login(request.POST)
-    active_tab = 'tab5'
-    if form.is_valid():
-        data=form.cleaned_data
-        user=authenticate(username=data.get("username"),password=data.get("password"))
-        if user is not None:
-            login(request,user)
-            return render(request,"login.html",{'form':form,'active_tab':active_tab})
-    return render(request,"login.html",{'form':form,'active_tab':active_tab})
+	active_tab = 'tab5'
+	if request.method == 'POST':
+		print("POST")
+		# create a form instance and populate it with data from the request:
+		form = form=FormLogin(request.POST)
+		# check whether it's valid:
+		if form.is_valid():
+			print("FORMA VALIDA")
+			data=form.cleaned_data
+			user=authenticate(username=data.get("username"),password=data.get("password"))
+			if user is not None:
+				login(request,user)
+				return render(request, 'clientes.html', {'active_tab':active_tab})
+			else:
+				return render(request,"registration/login.html",{'form':form,'active_tab':active_tab})
+	else:
+		print("NO ES POST")
+		form=FormLogin()
+		return render(request,"registration/login.html",{'form':form,'active_tab':active_tab})
+    
 
 def mascota(request):
     mascotas=Mascota.objects.all()
@@ -56,11 +67,11 @@ def registro(request):
         if form.is_valid():
             print("FORMA VALIDA")
             data=form.cleaned_data
-            regDB=User.objects.create_user(data.get("run"),data.get("email"),data.get("password"))
-            cliente=Cliente(user=regDB,nombre=data.get("nombre"),apellido=data.get("apellido"),email=data.get("email"),telefono=data.get("telefono"))
+            regDB=User.objects.create_user(data.get("username"),data.get("email"),data.get("password"),first_name=data.get("first_name"),last_name=data.get("last_name"))
+            cliente=Cliente(user=regDB,fono_numero=data.get("fono_numero"),run=data.get("run"))
             regDB.save()
             cliente.save()
-            lista = Clientes.objects.all()
+            lista = Cliente.objects.all()
             active_tab = 'tab1'
             return render(request, 'clientes.html', {'lista':lista,'active_tab':active_tab})
     # if a GET (or any other method) we'll create a blank form
@@ -75,4 +86,9 @@ def index(request):
 	
 def inicio(request):
     active_tab = 'tab1'
+    return render(request,"inicio.html", {'active_tab':active_tab})
+
+def salir(request):
+    active_tab = 'tab1'
+    logout(request)
     return render(request,"inicio.html", {'active_tab':active_tab})
