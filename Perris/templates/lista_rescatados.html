@@ -31,9 +31,13 @@
   		<td> SIN FOTO</td>
 
 		{% endif %}
+    
+    
     {% if request.user.is_authenticated and request.user.username == 'admin'  %}
+   
     <td>
-    <a class="btn btn-primary" href="{% url 'modificar_rescatado' r.codigo %}"role="button">Editar</a>
+    <a class="btn btn-primary" href="{% url 'modificar_rescatado' r.codigo %}"role="button">Editar</a>    
+    <a class="btn btn-primary" href="{% url 'eliminar_rescatado' r.codigo %}">Eliminar</a>
     </td>
     {% elif r.estado == 'Disponible' %}
           <td>
