@@ -75,6 +75,7 @@ def eliminar_rescatado(request,codigo):
 def adoptar(request, codigo):  
 
     #plantilla=loader.get_template("mascota.html")
+    active_tab = 'tab1'
     rescatado=Rescatado.objects.get(codigo=codigo)
     cliente = Cliente.objects.get(user = request.user)
     #contexto={
@@ -84,7 +85,7 @@ def adoptar(request, codigo):
     rescatado.estado = 'Adoptado'
     rescatado.save()
     adopcion.save()
-    return render(request, 'adopcion.html', {'rescatado':rescatado})
+    return render(request,"adopcion.html",{'rescatado':rescatado,'active_tab':active_tab})
 
 
 def clientes(request):  
