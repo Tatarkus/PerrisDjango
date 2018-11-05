@@ -64,7 +64,7 @@ class FormRescatado(forms.ModelForm):
     class Meta:
         model = Rescatado
         fields = ('nombre',
-                  'raza','descripcion','estado',
+                  'raza','descripcion','estado','foto'
                  )
     
     def __init__(self, *args, submit_title="Enviar", **kwargs):
@@ -86,8 +86,12 @@ class FormRescatado(forms.ModelForm):
                 Div('estado', css_class="col-sm-6"),
                 css_class = 'row'
             ),
+            Div(
+                Div('foto', css_class="col-sm-6"),
+                css_class = 'row'
+            ),
             ButtonHolder(
-                        Submit('save', 'Save')
+                        Submit('save', 'ADOPTAR')
             )
         )
 
