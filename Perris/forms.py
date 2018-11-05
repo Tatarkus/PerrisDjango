@@ -92,7 +92,12 @@ class FormRescatado(forms.ModelForm):
             ),
             ButtonHolder(
                         Submit('save', 'ADOPTAR')
-            )
+            ),
+            Div(
+            'name',
+            HTML('<img src="{{ logo.url }}" />'),
+            css_class='span4',
+        ),
         )
 
 
