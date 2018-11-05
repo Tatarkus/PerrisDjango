@@ -31,7 +31,15 @@
   		<td> SIN FOTO</td>
 
 		{% endif %}
-      <td> <a href="{% url 'modificar_rescatado' r.codigo %}">Actualizar</a> </td>
+    {% if request.user.is_authenticated and request.user.username == 'admin'  %}
+    <td>
+    <a class="btn btn-primary" href="{% url 'modificar_rescatado' r.codigo %}"role="button">Editar</a>
+    </td>
+    {% elif r.estado == 'Disponible' %}
+          <td>
+    <a class="btn btn-primary" href="{% url 'modificar_rescatado' r.codigo %}"role="button">Adoptar</a>
+    </td>
+      {% endif %}
     </tr>
   {%endfor%}
 

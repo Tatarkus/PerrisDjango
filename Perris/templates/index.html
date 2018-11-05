@@ -8,16 +8,16 @@
 		 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0,maximun-scale=1.0,minimun-scale=1.0"><!--las escalas indican un punto inicial,laescala maxima y minima-->
 
 		 <!--jQuery y otros scripts-->
-		<script type="text/javascript" src="{{ STATIC_URL }} static/js/prefix.js"></script>
-	 	<script type="text/javascript" src="{{ STATIC_URL }} static/js/jquery.js"></script>
+		<script type="text/javascript" src="{% static "/js/prefix.js" %}"></script>
+	 	<script type="text/javascript" src="{% static "/js/jquery.js" %}"></script>
 
 		 <!--BOOTSTRAP-->
 		<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-		<script type="text/javascript" src="{{ STATIC_URL }} static/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="{% static "/js/bootstrap.min.js" %}"></script>
 		
 
 		<!--CSS-->
-		<link rel="stylesheet" href="../static/css/estilos.css">
+		<link rel="stylesheet" href= "{% static "/css/estilos.css" %}">
 
 	</head>
 	<body>
