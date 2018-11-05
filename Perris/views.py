@@ -72,7 +72,7 @@ def eliminar_rescatado(request,codigo):
 
 
 
-def adopcion(request, codigo):  
+def adoptar(request, codigo):  
 
     #plantilla=loader.get_template("mascota.html")
     rescatado=Rescatado.objects.get(codigo=codigo)
@@ -128,3 +128,7 @@ def salir(request):
     active_tab = 'tab1'
     logout(request)
     return render(request,"inicio.html", {'active_tab':active_tab})
+
+def adopcion_exitosa(request):
+    active_tab = 'tab1'
+    return render(request,"adopcion.html", {'active_tab':active_tab})
