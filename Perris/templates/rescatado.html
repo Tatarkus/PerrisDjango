@@ -1,0 +1,15 @@
+{%extends 'index.html'%}
+{% block Rescatado %}
+{% load crispy_forms_tags %}
+<h2>Registro de Rescatados</h2>
+
+<div class=centrado>
+        
+	{% csrf_token %}
+    {% crispy form %}
+
+
+    
+</div>
+{% endblock %}
+

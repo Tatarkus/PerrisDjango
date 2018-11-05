@@ -23,6 +23,31 @@
 	height: 100%;
 	float: right;
 }
+.lista {
+	margin-top:10px;
+	width:100%;
+	border:solid;
+	border-width: 1px;
+	border-color:white;
+	
+
+}
+.lista .reg{	
+	width:100%;
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+
+	border-bottom:solid;
+	border-bottom-width: 2px;
+	border-bottom-color:#95d4b7;
+
+
+}
+.lista .reg .camp{
+
+
+}
 
 #micarrousel{
     width: 100%;
@@ -120,9 +145,7 @@
 
 	justify-content:space-between;
 }
-input{
-	background-color:red;
-}
+
 
 .form{
 	background:#95d4b7;
@@ -136,9 +159,7 @@ input{
 
 
 }
-input {
-	background-color:blue;
-}
+
 
 
 
@@ -350,10 +371,7 @@ footer .social a {
 
 @media screen and (max-width: 800px) {
 	/*https://www.w3schools.com/cssref/css3_pr_mediaquery.asp*/
-	header {
-		background-color:blue;
-		
-}
+
 
 	header {
 		flex-direction:column;
