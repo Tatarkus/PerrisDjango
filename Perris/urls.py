@@ -1,4 +1,6 @@
 from django.conf.urls import url, include
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
 urlpatterns=[
@@ -15,4 +17,7 @@ urlpatterns=[
     #url(r'^accounts/login/$',views.ingresar,name="login"), #redireccion apropiada, django por defecto te envia a esa url, mat:de donde te envia a usa url?
     url(r'^login$',views.ingresar,name="login"),
     url(r'^salir$',views.salir,name="salir"),
-]
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+
+

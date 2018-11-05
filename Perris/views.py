@@ -25,6 +25,7 @@ def ingresar(request):
 			data=form.cleaned_data
 			user=authenticate(username=data.get("username"),password=data.get("password"))
 			if user is not None:
+				active_tab = 'tab1'
 				login(request,user)
 				return render(request, 'clientes.html', {'active_tab':active_tab})
 			else:
@@ -35,23 +36,22 @@ def ingresar(request):
 		return render(request,"registration/login.html",{'form':form,'active_tab':active_tab})
     
 
-def agregar_rescatado(request): 
-
-    form=FormRescatado(request.POST) 
-    if(request.method=='POST'):
-
-        if form.is_valid():  
-            data=form.cleaned_data
-            regDB=Rescatado(nombre=data.get("nombre"),raza=data.get("raza"),descripcion=data.get("descripcion"),estado=data.get("estado"))
-            regDB.save()
-    else:
-        form=FormRescatado()       
-    return render(request,'rescatado.html',{'form':form})
+def agregar_rescatado(request):
+	active_tab = 'tab5'
+	form=FormRescatado(request.POST, request.FILES)
+	if(request.method=='POST'):	
+		if form.is_valid():
+			data=form.cleaned_data
+			regDB=Rescatado(nombre=data.get("nombre"),raza=data.get("raza"),descripcion=data.get("descripcion"),estado=data.get("estado"),foto=data.get("foto"))
+			regDB.save()
+	else:
+		form=FormRescatado()       
+	return render(request,'rescatado.html',{'form':form})
 
 def listar_rescatados(request):
-    
+    active_tab = 'tab5'
     lista=Rescatado.objects.all()
-    return render(request,'lista_rescatados.html',{'lista':lista})
+    return render(request,'lista_rescatados.html',{'lista':lista,'active_tab':active_tab})
 
 def modificar_rescatado(request,codigo):
     rescatado=Rescatado.objects.get(codigo=codigo)
