@@ -1,0 +1,10 @@
+{%extends 'index.html'%}
+{%block eliminar_rescatado%}
+<form method="post">
+    
+{% csrf_token %}
+<h2>¿Desea eliminar al rescatado {{rescatado.nombre}} ?</h2>
+<button class"btm btn-danger" type="submit">ELIMINAR</button>
+
+</form>
+{% endblock %}

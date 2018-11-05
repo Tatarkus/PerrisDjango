@@ -31,7 +31,9 @@
   		<td> SIN FOTO</td>
 
 		{% endif %}
-      <td> <a href="{% url 'modificar_rescatado' r.codigo %}">Actualizar</a> </td>
+      <td> <a href="{% url 'modificar_rescatado' r.codigo %}">Actualizar</a>
+        <a href="{% url 'eliminar_rescatado' r.codigo %}">Eliminar</a>  </td>
+    
     </tr>
   {%endfor%}
 
