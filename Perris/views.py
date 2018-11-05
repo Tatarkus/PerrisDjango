@@ -27,7 +27,7 @@ def ingresar(request):
 			if user is not None:
 				active_tab = 'tab1'
 				login(request,user)
-				return render(request, 'clientes.html', {'active_tab':active_tab})
+				return render(request, 'inicio.html', {'active_tab':active_tab})
 			else:
 				return render(request,"registration/login.html",{'form':form,'active_tab':active_tab})
 	else:
@@ -37,7 +37,7 @@ def ingresar(request):
     
 
 def agregar_rescatado(request):
-	active_tab = 'tab5'
+	active_tab = 'tab4'
 	form=FormRescatado(request.POST, request.FILES)
 	if(request.method=='POST'):	
 		if form.is_valid():
@@ -46,7 +46,7 @@ def agregar_rescatado(request):
 			regDB.save()
 	else:
 		form=FormRescatado()       
-	return render(request,'rescatado.html',{'form':form})
+	return render(request,'rescatado.html',{'form':form,'active_tab':active_tab})
 
 def listar_rescatados(request):
     active_tab = 'tab5'
