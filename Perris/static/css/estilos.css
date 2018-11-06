@@ -23,6 +23,31 @@
 	height: 100%;
 	float: right;
 }
+.galeria{
+	width:100%;
+	margin-left:auto;
+	margin-right:auto;
+	display:flex;
+	flex-direction: column;
+	color:white;
+
+}
+.cat{
+	display:flex;
+	
+	width:100%;
+	flex-wrap:wrap;
+	flex-direction:row;
+	justify-content:center;
+	margin-bottom: 50px;
+	color:white;
+}
+.resc{
+
+	
+
+}
+
 .lista {
 	margin-top:10px;
 	width:100%;

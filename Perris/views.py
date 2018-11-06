@@ -69,6 +69,12 @@ def eliminar_rescatado(request,codigo):
         rescatado.delete()
     return render(request,'eliminar_rescatado.html',{'rescatado':rescatado})
 
+def galeria(request):
+    rescatado=Rescatado.objects.filter(estado="Rescatado")
+    disponible=Rescatado.objects.filter(estado="Disponible")
+    adoptado=Rescatado.objects.filter(estado="Adoptado")    
+    return render(request,'galeria.html',{'rescatado':rescatado,'disponible':disponible,'adoptado':adoptado})
+
 
 
 
