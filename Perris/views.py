@@ -27,7 +27,7 @@ def ingresar(request):
 			if user is not None:
 				active_tab = 'tab1'
 				login(request,user)
-				return render(request, 'clientes.html', {'active_tab':active_tab})
+				return render(request, 'inicio.html', {'active_tab':active_tab})
 			else:
 				return render(request,"registration/login.html",{'form':form,'active_tab':active_tab})
 	else:
@@ -37,7 +37,7 @@ def ingresar(request):
     
 
 def agregar_rescatado(request):
-	active_tab = 'tab5'
+	active_tab = 'tab4'
 	form=FormRescatado(request.POST, request.FILES)
 	if(request.method=='POST'):	
 		if form.is_valid():
@@ -46,7 +46,7 @@ def agregar_rescatado(request):
 			regDB.save()
 	else:
 		form=FormRescatado()       
-	return render(request,'rescatado.html',{'form':form})
+	return render(request,'rescatado.html',{'form':form,'active_tab':active_tab})
 
 def listar_rescatados(request):
     active_tab = 'tab5'
@@ -78,9 +78,10 @@ def galeria(request):
 
 
 
-def adopcion(request, codigo):  
+def adoptar(request, codigo):  
 
     #plantilla=loader.get_template("mascota.html")
+    active_tab = 'tab1'
     rescatado=Rescatado.objects.get(codigo=codigo)
     cliente = Cliente.objects.get(user = request.user)
     #contexto={
@@ -90,7 +91,7 @@ def adopcion(request, codigo):
     rescatado.estado = 'Adoptado'
     rescatado.save()
     adopcion.save()
-    return render(request, 'adopcion.html', {'rescatado':rescatado})
+    return render(request,"adopcion.html",{'rescatado':rescatado,'active_tab':active_tab})
 
 
 def clientes(request):  
@@ -134,3 +135,7 @@ def salir(request):
     active_tab = 'tab1'
     logout(request)
     return render(request,"inicio.html", {'active_tab':active_tab})
+
+def adopcion_exitosa(request):
+    active_tab = 'tab1'
+    return render(request,"adopcion.html", {'active_tab':active_tab})

@@ -10,6 +10,27 @@
 	box-sizing: border-box;
 	
 }
+
+
+.perfil{
+    padding:10%;
+    margin-left: auto;
+    margin-right: auto;
+	width: 200%;
+	display: block;
+
+}
+.perfil .img{
+    text-align:center;
+}
+.perfil .details{
+    border-left:3px solid #ded4da;
+}
+.perfil .details p{
+    font-size:15px;
+    font-weight:bold;
+}
+
 .contenedor_formas{
 	margin: auto;
 	height: 400px;
@@ -469,7 +490,7 @@ hr {
 	float:right;
 }
 .contenedor2 .caja{
-    width: 32%;
+    width: 100%;
     overflow: hidden;
     box-shadow:10px 10px 5px 0px rgba(0,0,0,0.75);
 	display:flex;
@@ -498,11 +519,11 @@ hr {
 }
 
 .contenedor2{
-    width: 90%;
+    width: 100%;
     max-width: 1000px;
  background-color: #85d4b7;
     margin: auto;
-	display:flex;
+	display:block;
 	justify-content:space-between;
 }
 

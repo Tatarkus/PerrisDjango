@@ -91,7 +91,7 @@ class FormRescatado(forms.ModelForm):
                 css_class = 'row'
             ),
             ButtonHolder(
-                        Submit('save', 'ADOPTAR')
+                        Submit('save', 'Aceptar')
             ),
             Div(
         ),
