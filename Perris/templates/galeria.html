@@ -39,7 +39,7 @@
 {% for d in disponible %}
 <div class="resc">
    <center> <h3>{{d.nombre}}</h3></center>
-    {% if r.foto  %}
+    {% if d.foto  %}
 <img src="{{d.foto.url}}" width="250px" height="250px">
 {% else  %}
          no foto
@@ -60,7 +60,7 @@
 <div class="resc">
     
    <center> <h3>{{a.nombre}}</h3></center>
-   {% if r.foto  %}
+   {% if a.foto  %}
 <img src="{{a.foto.url}}" width="250px" height="250px">
 {% else  %}
          no foto

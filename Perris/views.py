@@ -87,6 +87,9 @@ def adoptar(request, codigo):
     #contexto={
     #    'adopciones:':Adopcion.objects.all(),
     #}
+    # el problema aca es que django no encuentra nada en "cliente"
+    # y retorna null cuando esperaba un retorno apropiado
+    # no se como solucionarlo realmente, algo que por logica esta mal?
     adopcion = Adopcion(run=cliente,codigo=rescatado)
     rescatado.estado = 'Adoptado'
     rescatado.save()

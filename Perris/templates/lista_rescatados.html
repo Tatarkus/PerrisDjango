@@ -33,7 +33,7 @@
 		{% endif %}
     
     
-    {% if request.user.is_authenticated and request.user.username == 'admin'  %}
+    {% if request.user.is_authenticated and request.user.is_superuser %}
    
     <td>
     <a class="btn btn-primary" href="{% url 'modificar_rescatado' r.codigo %}"role="button">Editar</a>    

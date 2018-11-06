@@ -30,15 +30,20 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# si cargamos la config de perris antes que las funciones de django
+# los templates pueden ser sobreescritos
+# es decir, creas un template propio en una carpeta donde django sepa buscarlo
+# y carga ese en vez de usar el por defecto
+# vease el password reset
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Perris.apps.PerrisConfig',
     'crispy_forms',
+    'django.contrib.auth',
+    'Perris.apps.PerrisConfig',    
 ]
 
 MIDDLEWARE = [
@@ -58,7 +63,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
@@ -124,9 +130,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,"Perris/static")
 MEDIA_ROOT = os.path.join(BASE_DIR,"Perris/media")
-MEDIA_URL = "/media/"
+MEDIA_URL = '/media/'
 
-#Emaill Sender
+#Email Sender
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com' #host que usas para enviar los correos. uso gmail porque no requiere extra configuracion
 EMAIL_PORT = 587 #cualquiera que se ponga aca debe ser abierto en el firewall, de otra forma no sirve
@@ -136,4 +142,4 @@ DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>' #sin esta linea el co
 
 print ("static dir path", STATIC_URL)
 
-
+#LOGIN_REDIRECT_URL = '/' no utilizado

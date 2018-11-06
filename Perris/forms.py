@@ -3,7 +3,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Div, HTML
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe          
-from .models import Cliente,Rescatado        
+from .models import Cliente,Rescatado
 
 
 class FormRegistroCliente(forms.ModelForm):
@@ -21,6 +21,7 @@ class FormRegistroCliente(forms.ModelForm):
 
 	def __init__(self, *args, submit_title="Enviar", **kwargs):
 		super().__init__(*args, **kwargs)
+		#user = super().save(commit=False) #snippet
 		self.helper=FormHelper()
 		self.fields['username'].label = 'Nombre de usuario'
 		self.fields['username'].help_text = None
@@ -29,6 +30,11 @@ class FormRegistroCliente(forms.ModelForm):
 		self.fields['first_name'].label = 'Nombre'
 		self.fields['email'].label = 'Correo electrónico'
 		self.fields['last_name'].label = 'Apellido'
+		#user.is_regular = True #snippet de como tuvo que haber sido aca
+							#para autirozaciones reales, no lo pude hacer
+							#porque ya usamos otra metodologia y no pueden
+							#ser mezcladas
+
 
 
 		self.helper.layout = Layout(

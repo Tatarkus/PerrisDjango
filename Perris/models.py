@@ -3,6 +3,14 @@ from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 import os
 
+#class User(AbstractUser):
+#	is_staff = models.BooleanField (default = False)
+#	is_regular = models.BooleanField(default = True)
+# requerido para hacer autirozaciones de mejor manera.
+# por como ya estaba hecho el codigo es pesima idea implementarlo
+# debido a que son dos metodologias diferentes y es pesima practica
+# utilizar mas de una.
+
 class Cliente(models.Model):
 	user= models.OneToOneField(User, on_delete = models.CASCADE)
 	run = models.CharField('RUN',max_length=30)
