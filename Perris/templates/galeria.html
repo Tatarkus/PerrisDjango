@@ -14,7 +14,12 @@
         <div class="resc">
             
            <center> <h3>{{r.nombre}}</h3></center>
+           {% if r.foto  %}
         <img src="{{r.foto.url}}" width="250px" height="250px">
+         {% else  %}
+         no foto
+         {% endif  %}
+
         </div>
         {%endfor%}
         
@@ -34,7 +39,11 @@
 {% for d in disponible %}
 <div class="resc">
    <center> <h3>{{d.nombre}}</h3></center>
+    {% if r.foto  %}
 <img src="{{d.foto.url}}" width="250px" height="250px">
+{% else  %}
+         no foto
+         {% endif  %}
 </div>
 {%endfor%}
 
@@ -51,7 +60,11 @@
 <div class="resc">
     
    <center> <h3>{{a.nombre}}</h3></center>
+   {% if r.foto  %}
 <img src="{{a.foto.url}}" width="250px" height="250px">
+{% else  %}
+         no foto
+{% endif  %}
 </div>
 {%endfor%}
     
